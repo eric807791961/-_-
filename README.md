@@ -59,23 +59,27 @@
 同時透過視覺化的方式透過預測結果與Validation裡Label的差來初步判斷模型的Performance
 ### CatBoost
 
-![CatBoost_code](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/Catboost_code.png)
+![CatBoost_code](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/CatBoost_code.png)
 
 利用Catboost的模型，我們給予每個屬性權重，若是要減少Noise及減少後續Model的負擔可以只取其中前幾個分數明顯較大的屬性，這邊我們取前4名; 分別是屋齡，建築的坪數，是否位於大安區，及土地的坪數。
-![CatBoost_Att](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/Catboost_Att.png)
+
+![CatBoost_Att](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/CatBoost_Att.png)
 
 預測結果
+
 ![Catboost](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/Catboost.png)
+
 Y-axis為Validation set的Label ; X-axis為模型的預測結果
 可以從紫色虛線的偏移大致判斷模型的效果
 
 
 ### XGBoost
 
-![XG_code](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/XGBoost_code.png)
+![XG_code](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/XGboost_code.png)
 
 可以看到在XGBoost的模型中，對屬性的權重跟CatBoost不同。第一名是土地坪數，再來分別是建築坪數及屋齡。之前CatBoost所認為的是否位於大安區在XGboost中甚至被排到很後面。但是可以發現土地坪數、建築坪數及屋齡對於房價的影響相較於其他屬性多很多。
-![XG_Att](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/XGBoost_Att.png)
+
+![XG_Att](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/XGboost_Att.png)
 
 預測結果
 ![XGB](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/XGBoost.png)
@@ -90,6 +94,7 @@ Y-axis為Validation set的Label ; X-axis為模型的預測結果
 ![rf_code](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/random_forest_code.png)
 
 ![rf](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/random_forest.png)
+
 可以看到random forest跟KNN Regressor的Performance相較於XGBoost跟CatBoost比紫虛線的偏移較嚴重(Performance較差)
 
 ### Linear Regression
@@ -99,11 +104,13 @@ Y-axis為Validation set的Label ; X-axis為模型的預測結果
 ### Final Ensemble Model
 
 ![df](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/dataframe.png)
+
 將各個模型的預測整合成一個Dataframe作為2層模型的input
 
-![ensemble_code](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/ensemble_code.png)
+![ensemble_code](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/emsemble_code.png)
 
 ![ensemble_p](https://raw.githubusercontent.com/eric807791961/Ensemble_Learning-Taipei_Housing_Price_Prediction/main/pics/Ensemble_d.png)
+
 最後Ensemble的預測結果相較於上面單個的Model相比確實有更好的Performance
 在每坪價格的median為17萬下，該模型MSE約為4萬。但是如果只考慮某使用目的(如住家用)，則MSE可以降至2萬
 
